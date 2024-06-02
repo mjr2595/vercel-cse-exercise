@@ -4,6 +4,15 @@ questionNum: "3"
 summary: "How did you solve a challenge or technical issue in a previous role?"
 ---
 
-Describe how you solved a challenge or technical issue that you faced in a previous role
-(preferably in a previous support role). How did you determine that your solution was
-successful?
+## Describe how you solved a challenge or technical issue that you faced in a previous role (preferably in a previous support role). How did you determine that your solution was successful?
+
+A customer came into chat support with a data collection issue. Customer is monitoring Meraki devices via the Meraki API.
+Adding additional devices to the network caused the network ID, which is used for API calls, to change.
+This only happens when the type of network changes — for example from a “wireless” network type to a “combined” network.
+Of course, to make things just a tad trickier, querying the API with the old network ID still returns a 200 status and payload.
+While in chat, I collected all relevant details from the customer, validated and replicated the issue, and submitted a Jira ticket for the developers.
+Once moved to ticket, I suggested a couple of potential fixes, tracked the development cycle, and kept the customer informed along the way.
+The provided quick fix was to pull the network ID in a separate process and writing the value to the monitored device.
+Then, in the data collection script, this updated ID is referenced and used in the API calls. The customer was satisfied with this fix and provided good customer feedback which is always appreciated.
+Ultimately, this was later improved further with an overall update to our Meraki monitoring suite.
+This improvement included the use of a shared caching mechanism that lives locally on the server running the Collector services (Java application).

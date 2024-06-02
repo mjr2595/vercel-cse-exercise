@@ -1,0 +1,41 @@
+---
+title: "Redirects"
+questionNum: "7"
+summary: "Redirecting from /blog to https://example.com"
+---
+
+## A customer writes in to the Helpdesk asking "How do I do a redirect from the `/blog` path to "https://example.com?". Please write a reply to the customer. Feel free to add any information about your decision making process after the reply.
+
+Hello Customer,
+
+Thanks for reaching out, I'm happy to help! Just to quickly confirm, are you using a framework? And if so, which one? I’m happy to provide you further detailed guidance.
+
+Here’s a quick example using Next.js:
+
+Within your `next.config.js` file, you can use the `redirects` key. You’ll want to specify the required `source`, `destination`, and `permanent` properties.
+
+This should look something like this:
+
+```jsx
+module.exports = {
+  async redirects() {
+    return [
+      {
+        source: "/blog",
+        destination: "https://example.com",
+        permanent: true,
+      },
+    ];
+  },
+};
+```
+
+Here’s our page on [using redirects with Next.js](https://nextjs.org/docs/app/api-reference/next-config-js/redirects)
+
+You can also configure redirects regardless of the framework. These redirects can be either dynamic or static. For more information, please see [this page](https://vercel.com/docs/edge-network/redirects#redirects).
+
+Please let me know if you have any additional questions!
+
+Best,
+
+Michael

@@ -1,0 +1,29 @@
+---
+title: "Edge Functions, Serverless Functions, and Edge Middleware. Oh my!"
+questionNum: "4"
+summary: "I'm on the edge of my seat! When would you choose to use Edge Functions, Serverless Functions, or Edge Middleware with Vercel?"
+---
+
+## When would you choose to use Edge Functions, Serverless Functions, or Edge Middleware with Vercel?
+
+This choice is highly dependent on the customer’s use case and the type of problem they are trying to solve. If possible, I would try to get some clarifying questions around their needs first.
+
+But I can also answer in a more general manner:
+
+---
+
+Edge Functions are great if you need fast and dynamic content delivered globally. For example, you may want to personalize content depending on user region. It’s good to note that Edge Functions run after the cache so they should be relegated for dynamic parts of your site once the page is loaded.
+
+For more info about the Edge runtime, see [here](https://vercel.com/docs/functions/runtimes/edge-runtime).
+
+And here’s a helpful [blog post](https://vercel.com/blog/edge-functions-generally-available) about Vercel Edge Functions.
+
+Serverless Functions are best for backend or business logic. Things like API endpoints, processing data, or event-driven responses like HTTP requests or database updates. One major thing to keep in mind is these operations typically have longer execution times than edge functions. Vercel offers a Node.js runtime, with access to all Node.js APIs. Vercel also offers Go, Python, and Ruby runtimes which are currently in beta.
+
+Here’s a helpful [page](https://vercel.com/docs/functions/runtimes) on choosing a runtime.
+
+On the other hand, Edge Middleware executes before a request is processed on a site. This is great for intercepting and modifying HTTP requests, dynamic routing, and adding additional security layers. This might be for authentication, rate limiting, logging, or analytics.
+
+For more info about Edge Middleware can be found [here](https://vercel.com/docs/functions/edge-middleware).
+
+And here’s a helpful [blog post](https://vercel.com/blog/vercel-edge-middleware-dynamic-at-the-speed-of-static) about Edge Middleware.

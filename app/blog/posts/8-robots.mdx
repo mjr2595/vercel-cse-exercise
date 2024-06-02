@@ -1,0 +1,52 @@
+---
+title: "No Indexing pls"
+questionNum: "8"
+summary: "No. I don't want no SEO. SEO is thing that can't get no love from me."
+---
+
+## A customer is creating a site and would like their project not to be indexed by search engines. Please write a reply to the customer. Feel free to add any information about your decision making process after the reply.
+
+Hello Customer,
+
+Thanks for reaching out, I'm happy to help! Just to quickly confirm, are you using a framework? And if so, which one? Are you looking to not index all deployments, including Production deployments?
+
+Indexing, by default, is handled via the X-Robots-Tag Header. From our Vercel [guide on indexing](https://vercel.com/guides/are-vercel-preview-deployment-indexed-by-search-engines):
+
+> Vercel [Preview Deployments](https://vercel.com/docs/platform/deployments#preview) are **not indexed by search engines** by default because the **`X-Robots-Tag`** HTTP header is set to `noindex`. If you are using a [Custom Domain](https://vercel.com/docs/custom-domains) that is assigned to a non-[Production Branch](https://vercel.com/docs/git#production-branch), however, the header `X-Robots-Tag: noindex` **will not** be set.
+
+That said, you can add or generate a `robots.txt` file. For example, if using Next.js with App Router:
+
+`app/robots.txt`
+
+```jsx
+User-agent: *
+Disallow: /
+
+Sitemap: https://acme.com/sitemap.xml
+```
+
+or, dynamically:
+
+`app/robots.ts`
+
+```jsx
+import { MetadataRoute } from "next";
+
+export default function robots(): MetadataRoute.Robots {
+  return {
+    rules: {
+      userAgent: "*",
+      disallow: "/",
+    },
+    sitemap: "https://acme.com/sitemap.xml",
+  };
+}
+```
+
+More info can be found on [this page](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/robots).
+
+Please let me know if you have any additional questions!
+
+Best,
+
+Michael
